@@ -36,7 +36,6 @@ const JobsList = (props) => {
         <thead
           className={props.language === "es-ES" ? "thead-light" : "thead-dark"}
         >
-          {console.log(props.language)}
           <tr>
             <th scope="col">#</th>
             <th scope="col">
