@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Job from "./job";
+import { FormattedMessage } from "react-intl";
 
-const JobsList = () => {
+const JobsList = (props) => {
   const [offers] = useState([
     {
       id: "0001",
@@ -32,20 +33,36 @@ const JobsList = () => {
   return (
     <div>
       <table className="table">
-        <thead className="thead-dark">
+        <thead
+          className={props.language === "es-ES" ? "thead-light" : "thead-dark"}
+        >
+          {console.log(props.language)}
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Position</th>
-            <th scope="col">Company</th>
-            <th scope="col">Salary</th>
-            <th scope="col">City</th>
-            <th scope="col">Publication date</th>
+            <th scope="col">
+              <FormattedMessage id="Position" />
+            </th>
+            <th scope="col">
+              <FormattedMessage id="Company" />
+            </th>
+            <th scope="col">
+              <FormattedMessage id="Salary" />
+            </th>
+            <th scope="col">
+              <FormattedMessage id="City" />
+            </th>
+            <th scope="col">
+              <FormattedMessage id="PublicationDate" />
+            </th>
+            <th scope="col">
+              <FormattedMessage id="Views" />
+            </th>
           </tr>
         </thead>
         <tbody>
           {console.log("Offers", offers)}
           {offers.map((e, i) => (
-            <Job key={i} offer={e} />
+            <Job key={i} offer={e} views={Math.round(Math.random() * 3000)} />
           ))}
         </tbody>
       </table>
